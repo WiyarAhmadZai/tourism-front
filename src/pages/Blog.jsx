@@ -197,7 +197,7 @@ const Blog = () => {
         </div>
       </motion.section>
       
-      {/* Blog Posts */}
+      {/* Blog Posts Grid */}
       <motion.section 
         className="py-16 bg-white"
         initial={{ opacity: 0, y: 30 }}
@@ -236,7 +236,7 @@ const Blog = () => {
               {/* Pagination */}
               {totalPages > 1 && (
                 <motion.div 
-                  className="mt-12 flex justify-center"
+                  className="flex justify-center mt-12"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.3 }}
@@ -246,7 +246,11 @@ const Blog = () => {
                     <button
                       onClick={() => handlePageChange(currentPage - 1)}
                       disabled={currentPage === 1}
-                      className={`px-4 py-2 rounded-lg ${currentPage === 1 ? 'bg-gray-200 text-gray-500 cursor-not-allowed' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'}`}
+                      className={`px-4 py-2 rounded-lg ${
+                        currentPage === 1 
+                          ? 'bg-gray-200 text-gray-500 cursor-not-allowed' 
+                          : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      }`}
                     >
                       Previous
                     </button>
@@ -254,26 +258,28 @@ const Blog = () => {
                     {[...Array(totalPages)].map((_, index) => {
                       const pageNumber = index + 1;
                       return (
-                        <motion.button
+                        <button
                           key={pageNumber}
                           onClick={() => handlePageChange(pageNumber)}
-                          className={`w-10 h-10 rounded-full ${currentPage === pageNumber ? 'bg-gray-800 text-white' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'}`}
-                          initial={{ opacity: 0, y: 10 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ duration: 0.3, delay: index * 0.05 }}
-                          viewport={{ once: true }}
-                          whileHover={{ scale: 1.1 }}
-                          whileTap={{ scale: 0.95 }}
+                          className={`w-10 h-10 rounded-full ${
+                            currentPage === pageNumber
+                              ? 'bg-green-600 text-white'
+                              : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                          }`}
                         >
                           {pageNumber}
-                        </motion.button>
+                        </button>
                       );
                     })}
                     
                     <button
                       onClick={() => handlePageChange(currentPage + 1)}
                       disabled={currentPage === totalPages}
-                      className={`px-4 py-2 rounded-lg ${currentPage === totalPages ? 'bg-gray-200 text-gray-500 cursor-not-allowed' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'}`}
+                      className={`px-4 py-2 rounded-lg ${
+                        currentPage === totalPages 
+                          ? 'bg-gray-200 text-gray-500 cursor-not-allowed' 
+                          : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      }`}
                     >
                       Next
                     </button>
@@ -285,53 +291,81 @@ const Blog = () => {
         </div>
       </motion.section>
       
-      {/* Newsletter CTA */}
+      {/* Featured Categories */}
       <motion.section 
-        className="py-16 bg-gray-800 text-white"
+        className="py-16 bg-gray-100"
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
       >
-        <div className="container mx-auto px-4 text-center">
-          <motion.h2 
-            className="text-3xl md:text-4xl font-bold mb-6"
+        <div className="container mx-auto px-4">
+          <motion.div 
+            className="text-center mb-12"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            Stay Updated with Our Latest Stories
-          </motion.h2>
-          <motion.p 
-            className="text-xl text-gray-300 max-w-3xl mx-auto mb-8"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            Subscribe to our newsletter for the latest travel tips, special offers, and destination guides
-          </motion.p>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Explore Categories</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Browse our blog by different topics and interests
+            </p>
+          </motion.div>
           
-          <motion.form 
-            className="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            viewport={{ once: true }}
-          >
-            <input 
-              type="email" 
-              placeholder="Your email address" 
-              className="flex-grow px-4 py-3 rounded-lg text-gray-800 focus:outline-none"
-            />
-            <button 
-              type="submit" 
-              className="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg transition-colors"
-            >
-              Subscribe
-            </button>
-          </motion.form>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                title: "Destinations",
+                description: "Discover hidden gems and popular travel spots across Afghanistan",
+                image: "/images/category-destinations.jpg",
+                count: "18 articles"
+              },
+              {
+                title: "Culture",
+                description: "Learn about Afghan traditions, festivals, and way of life",
+                image: "/images/category-culture.jpg",
+                count: "15 articles"
+              },
+              {
+                title: "Adventure",
+                description: "Experience thrilling outdoor activities and expeditions",
+                image: "/images/category-adventure.jpg",
+                count: "12 articles"
+              }
+            ].map((category, index) => (
+              <motion.div 
+                key={index}
+                className="bg-white rounded-xl overflow-hidden shadow-lg"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <div className="h-48 relative">
+                  <img 
+                    src={category.image} 
+                    alt={category.title} 
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-black bg-opacity-30"></div>
+                  <h3 className="absolute bottom-4 left-4 text-xl font-bold text-white">{category.title}</h3>
+                </div>
+                <div className="p-6">
+                  <p className="text-gray-600 mb-4">{category.description}</p>
+                  <div className="flex justify-between items-center">
+                    <span className="text-gray-500">{category.count}</span>
+                    <button 
+                      onClick={() => setSelectedCategory(category.title)}
+                      className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg transition-colors"
+                    >
+                      Read Articles
+                    </button>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </motion.section>
     </div>
