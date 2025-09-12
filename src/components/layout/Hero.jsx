@@ -5,16 +5,14 @@ import { Link } from 'react-router-dom';
 const Hero = () => {
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
-      {/* Video Background */}
-      <video 
-        autoPlay 
-        muted 
-        loop 
-        className="absolute inset-0 w-full h-full object-cover"
-      >
-        <source src="/videos/hero.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+      {/* Image Background */}
+      <div className="absolute inset-0 w-full h-full">
+        <img 
+          src="/images/IMG_3623.JPG" 
+          alt="Afghanistan landscape" 
+          className="w-full h-full object-cover"
+        />
+      </div>
       
       {/* Overlay */}
       <div className="absolute inset-0 bg-black bg-opacity-80"></div>
