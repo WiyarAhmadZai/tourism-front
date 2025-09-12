@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 const Button = ({ 
   children, 
@@ -8,19 +9,21 @@ const Button = ({
   onClick, 
   className = '', 
   type = 'button',
+  whileHover = { scale: 1.05 },
+  whileTap = { scale: 0.95 },
   ...props 
 }) => {
   // Define base classes
-  const baseClasses = 'inline-flex items-center justify-center font-medium rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2';
+  const baseClasses = 'inline-flex items-center justify-center font-medium rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2';
   
   // Define variant classes
   const variantClasses = {
-    primary: 'bg-primary text-white hover:bg-green-700 focus:ring-primary',
-    secondary: 'bg-secondary text-white hover:bg-blue-700 focus:ring-secondary',
+    primary: 'bg-primary text-white hover:bg-secondary focus:ring-primary',
+    secondary: 'bg-secondary text-white hover:bg-primary focus:ring-secondary',
     accent: 'bg-accent text-gray-900 hover:bg-yellow-600 focus:ring-accent',
-    outline: 'bg-transparent border border-primary text-primary hover:bg-primary hover:text-white focus:ring-primary',
-    ghost: 'bg-transparent text-primary hover:bg-green-50 focus:ring-primary',
-    danger: 'bg-red-600 text-white hover:bg-red-700 focus:ring-red-500'
+    outline: 'bg-transparent border-2 border-primary text-primary hover:bg-primary hover:text-white focus:ring-primary',
+    ghost: 'bg-transparent text-primary hover:bg-primary/10 focus:ring-primary',
+    danger: 'bg-danger text-white hover:bg-red-700 focus:ring-red-500'
   };
   
   // Define size classes
@@ -34,15 +37,17 @@ const Button = ({
   const classes = `${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${disabled ? 'opacity-50 cursor-not-allowed' : ''} ${className}`;
   
   return (
-    <button
+    <motion.button
       type={type}
       className={classes}
       onClick={onClick}
       disabled={disabled}
+      whileHover={whileHover}
+      whileTap={whileTap}
       {...props}
     >
       {children}
-    </button>
+    </motion.button>
   );
 };
 
