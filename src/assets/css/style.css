@@ -6281,7 +6281,7 @@ a.social_bt.linkedin:before {
 #carousel-home .owl-carousel .owl-nav [class*="owl-"]:focus {
   outline: none;
 }
-#carousel-home section {
+#carousel-home section:not(.list_carousel) {
   display: none;
 }
 
