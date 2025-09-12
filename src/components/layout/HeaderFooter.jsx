@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import LanguageSwitcher from '../ui/LanguageSwitcher';
 
 const HeaderFooter = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -41,8 +42,8 @@ const HeaderFooter = () => {
               <Link
                 key={link.path}
                 to={link.path}
-                className={`font-medium hover:text-green-600 transition-colors ${
-                  location.pathname === link.path ? 'text-green-600' : 'text-gray-700'
+                className={`font-medium hover:text-primary transition-colors ${
+                  location.pathname === link.path ? 'text-primary' : 'text-gray-700'
                 }`}
               >
                 {link.name}
@@ -52,12 +53,10 @@ const HeaderFooter = () => {
 
           {/* Auth & Language Switcher */}
           <div className="hidden md:flex items-center space-x-4">
-            <button className="text-gray-700 hover:text-green-600 transition-colors">
-              English
-            </button>
+            <LanguageSwitcher />
             <Link
               to="/login"
-              className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors"
+              className="bg-primary text-white px-4 py-2 rounded-lg hover:bg-secondary transition-colors"
             >
               Login
             </Link>
@@ -99,7 +98,7 @@ const HeaderFooter = () => {
                   key={link.path}
                   to={link.path}
                   className={`py-2 font-medium ${
-                    location.pathname === link.path ? 'text-green-600' : 'text-gray-700'
+                    location.pathname === link.path ? 'text-primary' : 'text-gray-700'
                   }`}
                   onClick={() => setIsMenuOpen(false)}
                 >
@@ -107,10 +106,10 @@ const HeaderFooter = () => {
                 </Link>
               ))}
               <div className="flex items-center justify-between pt-3 border-t">
-                <button className="text-gray-700">English</button>
+                <LanguageSwitcher />
                 <Link
                   to="/login"
-                  className="bg-green-600 text-white px-4 py-2 rounded-lg"
+                  className="bg-primary text-white px-4 py-2 rounded-lg"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Login
