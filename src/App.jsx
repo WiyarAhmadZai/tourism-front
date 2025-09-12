@@ -22,7 +22,7 @@ function App() {
       <HeaderFooter />
       
       {/* Main Content */}
-      <main className="flex-grow pt-16">
+      <main className="flex-grow">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
