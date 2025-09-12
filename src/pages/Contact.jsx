@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -48,21 +49,44 @@ const Contact = () => {
   return (
     <div>
       {/* Hero Section */}
-      <div className="relative h-96 flex items-center justify-center overflow-hidden bg-gray-800">
+      <motion.div 
+        className="relative h-96 flex items-center justify-center overflow-hidden bg-gray-800"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+      >
         <div className="absolute inset-0 bg-black bg-opacity-60"></div>
         <div className="relative z-10 text-center px-4">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Contact Us</h1>
-          <p className="text-xl text-gray-200 max-w-3xl mx-auto">
+          <motion.h1 
+            className="text-4xl md:text-5xl font-bold text-white mb-4"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            Contact Us
+          </motion.h1>
+          <motion.p 
+            className="text-xl text-gray-200 max-w-3xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
             Get in touch with our team for inquiries, feedback, or assistance with your travel plans
-          </p>
+          </motion.p>
         </div>
-      </div>
+      </motion.div>
       
       {/* Contact Content */}
-      <section className="py-16 bg-white">
+      <motion.section 
+        className="py-16 bg-white"
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+      >
         <div className="container mx-auto px-4">
           <div className="flex flex-col lg:flex-row gap-12">
-            {/* Contact Form */}
+            {/* Contact Form - No animations as requested */}
             <div className="lg:w-1/2">
               <h2 className="text-3xl font-bold text-gray-800 mb-6">Send us a Message</h2>
               
@@ -163,11 +187,31 @@ const Contact = () => {
             </div>
             
             {/* Contact Information */}
-            <div className="lg:w-1/2">
-              <h2 className="text-3xl font-bold text-gray-800 mb-6">Get in Touch</h2>
+            <motion.div 
+              className="lg:w-1/2"
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              <motion.h2 
+                className="text-3xl font-bold text-gray-800 mb-6"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: true }}
+              >
+                Get in Touch
+              </motion.h2>
               
               <div className="space-y-8">
-                <div className="flex">
+                <motion.div 
+                  className="flex"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.1 }}
+                  viewport={{ once: true }}
+                >
                   <div className="mr-6">
                     <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center">
                       <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -191,9 +235,15 @@ const Contact = () => {
                       Chat on WhatsApp
                     </a>
                   </div>
-                </div>
+                </motion.div>
                 
-                <div className="flex">
+                <motion.div 
+                  className="flex"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                  viewport={{ once: true }}
+                >
                   <div className="mr-6">
                     <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center">
                       <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -212,9 +262,15 @@ const Contact = () => {
                       Send us an email
                     </a>
                   </div>
-                </div>
+                </motion.div>
                 
-                <div className="flex">
+                <motion.div 
+                  className="flex"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.3 }}
+                  viewport={{ once: true }}
+                >
                   <div className="mr-6">
                     <div className="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center">
                       <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -229,11 +285,17 @@ const Contact = () => {
                     <p className="text-gray-600">Kabul, Afghanistan</p>
                     <p className="text-gray-600 mt-3">We're open Monday-Friday, 9:00 AM - 5:00 PM</p>
                   </div>
-                </div>
+                </motion.div>
               </div>
               
               {/* Social Media */}
-              <div className="mt-12 pt-8 border-t border-gray-200">
+              <motion.div 
+                className="mt-12 pt-8 border-t border-gray-200"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                viewport={{ once: true }}
+              >
                 <h3 className="text-xl font-bold text-gray-800 mb-4">Follow Us</h3>
                 <div className="flex space-x-4">
                   <a href="#" className="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-green-600 hover:text-white transition-colors">
@@ -252,36 +314,50 @@ const Contact = () => {
                     </svg>
                   </a>
                 </div>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           </div>
         </div>
-      </section>
+      </motion.section>
       
       {/* Map Section */}
-      <section className="py-16 bg-gray-100">
+      <motion.section 
+        className="py-16 bg-gray-100"
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+      >
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
+          <motion.div 
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
             <h2 className="text-3xl font-bold text-gray-800 mb-4">Visit Our Office</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               We're located in the heart of Kabul, ready to assist you with your travel plans
             </p>
-          </div>
+          </motion.div>
           
-          <div className="bg-white rounded-lg shadow-md overflow-hidden">
-            <div className="h-96 bg-gray-200 border-2 border-dashed rounded-t-lg w-full flex items-center justify-center">
-              <div className="text-center">
-                <svg className="w-16 h-16 mx-auto text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                </svg>
-                <p className="mt-4 text-gray-500">Interactive Map of Our Location</p>
-                <p className="text-sm text-gray-400 mt-2">Embed Google Maps here</p>
-              </div>
-            </div>
-          </div>
+          <motion.div 
+            className="bg-white rounded-lg shadow-md overflow-hidden"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            {/* Using an image from the public folder for the map section */}
+            <img 
+              src="/images/abstract-destruction-wt.jpg" 
+              alt="Afghanistan Tourism Office Location" 
+              className="h-96 w-full object-cover"
+            />
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
     </div>
   );
 };
