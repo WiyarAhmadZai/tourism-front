@@ -195,24 +195,12 @@ const PackageDetail = () => {
                       <div className="text-gray-700">Duration</div>
                     </div>
                     <div className="bg-gray-50 rounded-lg p-6 text-center">
-                      <div className="flex justify-center mb-2">
-                        {[...Array(5)].map((_, i) => (
-                          <svg 
-                            key={i} 
-                            className={`w-6 h-6 ${i < tourPackage.rating ? 'text-yellow-500' : 'text-gray-300'}`} 
-                            fill="currentColor" 
-                            viewBox="0 0 20 20" 
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                          </svg>
-                        ))}
-                      </div>
-                      <div className="text-gray-700">Rating</div>
+                      <div className="text-3xl font-bold text-blue-600 mb-2">5*</div>
+                      <div className="text-gray-700">Accommodation</div>
                     </div>
                     <div className="bg-gray-50 rounded-lg p-6 text-center">
-                      <div className="text-3xl font-bold text-blue-600 mb-2">Group</div>
-                      <div className="text-gray-700">Size 2-12</div>
+                      <div className="text-3xl font-bold text-blue-600 mb-2">{tourPackage.rating}/5</div>
+                      <div className="text-gray-700">Rating</div>
                     </div>
                   </div>
                   
@@ -224,7 +212,7 @@ const PackageDetail = () => {
                           <img 
                             src={image} 
                             alt={`${tourPackage.name} ${index + 1}`} 
-                            className="w-full h-48 object-cover"
+                            className="w-full h-32 object-cover"
                           />
                         </div>
                       ))}
@@ -236,17 +224,18 @@ const PackageDetail = () => {
               {activeTab === 'itinerary' && (
                 <div>
                   <h2 className="text-2xl font-bold text-gray-800 mb-6">Detailed Itinerary</h2>
-                  
                   <div className="space-y-6">
                     {tourPackage.itinerary.map((day, index) => (
                       <div key={index} className="border border-gray-200 rounded-lg p-6">
-                        <div className="flex flex-wrap items-center mb-4">
-                          <div className="bg-blue-600 text-white w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg mr-4">
-                            Day {day.day}
+                        <div className="flex items-start">
+                          <div className="bg-blue-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4 flex-shrink-0">
+                            {day.day}
                           </div>
-                          <h3 className="text-xl font-bold text-gray-800">{day.title}</h3>
+                          <div>
+                            <h3 className="text-xl font-bold text-gray-800 mb-2">{day.title}</h3>
+                            <p className="text-gray-600">{day.description}</p>
+                          </div>
                         </div>
-                        <p className="text-gray-600">{day.description}</p>
                       </div>
                     ))}
                   </div>
@@ -259,8 +248,8 @@ const PackageDetail = () => {
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                     <div>
-                      <h3 className="text-xl font-bold text-gray-800 mb-4">What's Included</h3>
-                      <ul className="space-y-3">
+                      <h3 className="text-xl font-bold text-gray-800 mb-4">Included in Price</h3>
+                      <ul className="space-y-2">
                         {tourPackage.includes.map((item, index) => (
                           <li key={index} className="flex items-start">
                             <svg className="w-5 h-5 text-green-600 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -273,8 +262,8 @@ const PackageDetail = () => {
                     </div>
                     
                     <div>
-                      <h3 className="text-xl font-bold text-gray-800 mb-4">What's Excluded</h3>
-                      <ul className="space-y-3">
+                      <h3 className="text-xl font-bold text-gray-800 mb-4">Not Included</h3>
+                      <ul className="space-y-2">
                         {tourPackage.excludes.map((item, index) => (
                           <li key={index} className="flex items-start">
                             <svg className="w-5 h-5 text-red-600 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -287,9 +276,9 @@ const PackageDetail = () => {
                     </div>
                   </div>
                   
-                  <div className="bg-yellow-50 rounded-lg p-6 mb-8">
+                  <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6">
                     <h3 className="text-xl font-bold text-gray-800 mb-4">Important Information</h3>
-                    <ul className="space-y-3">
+                    <ul className="space-y-2">
                       {tourPackage.importantInfo.map((info, index) => (
                         <li key={index} className="flex items-start">
                           <svg className="w-5 h-5 text-yellow-600 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -306,111 +295,123 @@ const PackageDetail = () => {
             
             {/* Sidebar */}
             <div className="lg:w-1/3">
-              <div className="bg-gray-50 rounded-lg p-6 sticky top-24">
+              <div className="bg-gray-50 rounded-lg p-6 mb-8 sticky top-24">
                 <h3 className="text-xl font-bold text-gray-800 mb-4">Book This Tour</h3>
-                
-                <div className="mb-6">
-                  <div className="flex items-center justify-between mb-2">
-                    <label className="text-gray-700">Select Date</label>
-                    <span className="text-sm text-gray-500">Flexible</span>
-                  </div>
-                  <input 
-                    type="date" 
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-600"
-                  />
-                </div>
+                <div className="text-3xl font-bold text-blue-600 mb-6">${tourPackage.price}<span className="text-lg text-gray-600">/person</span></div>
                 
                 <div className="mb-6">
                   <label className="block text-gray-700 mb-2">Number of Travelers</label>
                   <div className="flex items-center">
                     <button 
                       onClick={() => handleQuantityChange(quantity - 1)}
-                      className="bg-gray-200 text-gray-700 w-10 h-10 rounded-l-lg flex items-center justify-center hover:bg-gray-300"
+                      className="bg-gray-200 text-gray-700 px-4 py-2 rounded-l-lg hover:bg-gray-300"
                     >
                       -
                     </button>
-                    <div className="bg-gray-100 w-16 h-10 flex items-center justify-center">
-                      {quantity}
-                    </div>
+                    <input 
+                      type="number" 
+                      value={quantity}
+                      onChange={(e) => handleQuantityChange(parseInt(e.target.value))}
+                      className="w-16 text-center border-y border-gray-200 py-2"
+                      min="1"
+                      max="10"
+                    />
                     <button 
                       onClick={() => handleQuantityChange(quantity + 1)}
-                      className="bg-gray-200 text-gray-700 w-10 h-10 rounded-r-lg flex items-center justify-center hover:bg-gray-300"
+                      className="bg-gray-200 text-gray-700 px-4 py-2 rounded-r-lg hover:bg-gray-300"
                     >
                       +
                     </button>
                   </div>
                 </div>
                 
-                <div className="mb-6 p-4 bg-white rounded-lg border border-gray-200">
-                  <div className="flex justify-between mb-2">
-                    <span className="text-gray-600">${tourPackage.price} × {quantity} traveler(s)</span>
-                    <span className="font-medium">${tourPackage.price * quantity}</span>
-                  </div>
-                  <div className="flex justify-between mb-2">
-                    <span className="text-gray-600">Service Fee</span>
-                    <span className="font-medium">$49</span>
-                  </div>
-                  <div className="border-t border-gray-200 pt-2 mt-2">
-                    <div className="flex justify-between font-bold text-lg">
-                      <span>Total</span>
-                      <span>${tourPackage.price * quantity + 49}</span>
-                    </div>
-                  </div>
+                <div className="flex justify-between mb-4">
+                  <span className="text-gray-600">Total Price:</span>
+                  <span className="font-bold text-xl">${tourPackage.price * quantity}</span>
                 </div>
                 
                 <button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg transition-colors mb-4">
-                  Add to Cart
-                </button>
-                
-                <button className="w-full bg-white border border-blue-600 text-blue-600 hover:bg-blue-50 font-bold py-3 px-4 rounded-lg transition-colors">
                   Book Now
                 </button>
                 
-                <div className="mt-8 pt-6 border-t border-gray-200">
-                  <h4 className="font-bold text-gray-800 mb-3">Have Questions?</h4>
-                  <p className="text-gray-600 mb-4">
-                    Our travel experts are ready to help you plan the perfect trip.
-                  </p>
-                  <a 
-                    href="/contact" 
-                    className="inline-block bg-gray-800 hover:bg-black text-white font-bold py-2 px-4 rounded-lg transition-colors"
-                  >
-                    Contact Us
-                  </a>
-                </div>
+                <button className="w-full bg-white border border-blue-600 text-blue-600 hover:bg-blue-50 font-bold py-3 px-4 rounded-lg transition-colors">
+                  Contact Us
+                </button>
               </div>
               
-              {/* Related Packages */}
-              <div className="mt-8">
-                <h3 className="text-xl font-bold text-gray-800 mb-4">Related Packages</h3>
-                <div className="space-y-4">
-                  {relatedPackages.map((pkg) => (
-                    <div key={pkg.id} className="flex border border-gray-200 rounded-lg overflow-hidden">
-                      <div className="w-24 h-24">
-                        <img 
-                          src={pkg.image} 
-                          alt={pkg.name} 
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                      <div className="p-3 flex-grow">
-                        <h4 className="font-bold text-gray-800 text-sm">{pkg.name}</h4>
-                        <div className="flex items-center mt-1">
-                          <span className="text-green-600 font-bold">${pkg.price}</span>
-                          <span className="text-gray-500 text-sm ml-2">{pkg.duration}</span>
-                        </div>
-                        <a 
-                          href={`/package/${pkg.id}`} 
-                          className="text-blue-600 hover:text-blue-800 text-sm font-medium mt-2 inline-block"
-                        >
-                          View Details
-                        </a>
-                      </div>
-                    </div>
-                  ))}
+              <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+                <h3 className="text-xl font-bold text-gray-800 mb-4">Need Help?</h3>
+                <p className="text-gray-600 mb-4">
+                  Our travel experts are available 24/7 to assist you with any questions about this tour.
+                </p>
+                <div className="space-y-3">
+                  <div className="flex items-center">
+                    <svg className="w-5 h-5 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                    <span className="text-gray-700">+93 776 992 603</span>
+                  </div>
+                  <div className="flex items-center">
+                    <svg className="w-5 h-5 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                    <span className="text-gray-700">info@afghanistantourism.gov.af</span>
+                  </div>
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* Related Packages */}
+      <section className="py-16 bg-gray-100">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">Related Packages</h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {relatedPackages.map((pkg, index) => (
+              <div key={index} className="bg-white rounded-lg overflow-hidden shadow-md">
+                <div className="h-48 relative">
+                  <img 
+                    src={pkg.image} 
+                    alt={pkg.name} 
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute top-4 right-4 bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-bold">
+                    {pkg.duration}
+                  </div>
+                </div>
+                <div className="p-6">
+                  <div className="flex justify-between items-start mb-2">
+                    <h3 className="text-xl font-bold text-gray-800">{pkg.name}</h3>
+                    <div className="flex items-center">
+                      {[...Array(5)].map((_, i) => (
+                        <svg 
+                          key={i} 
+                          className={`w-4 h-4 ${i < pkg.rating ? 'text-yellow-500' : 'text-gray-300'}`} 
+                          fill="currentColor" 
+                          viewBox="0 0 20 20" 
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                      ))}
+                    </div>
+                  </div>
+                  <p className="text-gray-600 mb-4">{pkg.description}</p>
+                  <div className="flex justify-between items-center">
+                    <div className="text-2xl font-bold text-blue-600">${pkg.price}</div>
+                    <a 
+                      href={`/package/${pkg.id}`} 
+                      className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors"
+                    >
+                      View Details
+                    </a>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
