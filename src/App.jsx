@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import HeaderFooter from './components/layout/HeaderFooter';
+import Footer from './components/layout/Footer';
 import Home from './pages/Home';
 import Explore from './pages/Explore';
 import Destinations from './pages/Destinations';
@@ -41,6 +42,8 @@ function App() {
           <Route path="/register" element={<Register />} />
         </Routes>
       </main>
+      
+      <Footer />
     </div>
   );
 }
