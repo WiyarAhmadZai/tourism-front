@@ -215,7 +215,7 @@ const Packages = () => {
                 value={priceRange}
                 onChange={(e) => setPriceRange(e.target.value)}
               >
-                <option value="">Any Price</option>
+                <option value="">All Prices</option>
                 <option value="0-500">Under $500</option>
                 <option value="500-1000">$500 - $1000</option>
                 <option value="1000-2000">$1000 - $2000</option>
@@ -288,13 +288,7 @@ const Packages = () => {
               <p className="text-gray-600">Try adjusting your search or filter criteria</p>
             </motion.div>
           ) : (
-            <motion.div 
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
-            >
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredPackages.map((tourPackage, index) => (
                 <motion.div
                   key={tourPackage.id}
@@ -306,50 +300,90 @@ const Packages = () => {
                   <PackageCard tourPackage={tourPackage} />
                 </motion.div>
               ))}
-            </motion.div>
+            </div>
           )}
         </div>
       </motion.section>
       
-      {/* Call to Action */}
+      {/* Why Choose Our Packages */}
       <motion.section 
-        className="py-16 bg-blue-600 text-white"
+        className="py-16 bg-gray-100"
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
       >
-        <div className="container mx-auto px-4 text-center">
-          <motion.h2 
-            className="text-3xl md:text-4xl font-bold mb-6"
+        <div className="container mx-auto px-4">
+          <motion.div 
+            className="text-center mb-12"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            Customize Your Own Adventure
-          </motion.h2>
-          <motion.p 
-            className="text-xl text-blue-100 max-w-3xl mx-auto mb-8"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            Don't see what you're looking for? Our travel experts can create a personalized itinerary just for you.
-          </motion.p>
-          <motion.a 
-            href="/contact" 
-            className="inline-block bg-white text-blue-600 hover:bg-gray-100 font-bold py-3 px-8 rounded-lg transition-colors"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            viewport={{ once: true }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Request Custom Package
-          </motion.a>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Why Choose Our Packages</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Experience the best of Afghanistan with our carefully crafted tour packages
+            </p>
+          </motion.div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              {
+                title: "Expert Local Guides",
+                description: "Our knowledgeable guides provide authentic insights into Afghan culture and history",
+                icon: (
+                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                  </svg>
+                )
+              },
+              {
+                title: "Authentic Experiences",
+                description: "Immerse yourself in genuine Afghan culture through our carefully planned itineraries",
+                icon: (
+                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                  </svg>
+                )
+              },
+              {
+                title: "Comfortable Accommodations",
+                description: "Rest easy in our selection of quality hotels and traditional accommodations",
+                icon: (
+                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                  </svg>
+                )
+              },
+              {
+                title: "Flexible Itineraries",
+                description: "Customize your journey with our adaptable tour packages to suit your interests",
+                icon: (
+                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+                  </svg>
+                )
+              }
+            ].map((feature, index) => (
+              <motion.div 
+                key={index}
+                className="bg-white rounded-xl p-6 shadow-lg text-center"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <div className="text-green-600">
+                    {feature.icon}
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold text-gray-800 mb-3">{feature.title}</h3>
+                <p className="text-gray-600">{feature.description}</p>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </motion.section>
     </div>
