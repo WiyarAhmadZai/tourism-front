@@ -213,7 +213,7 @@ const Destinations = () => {
               {/* Pagination */}
               {totalPages > 1 && (
                 <motion.div 
-                  className="mt-12 flex justify-center"
+                  className="flex justify-center mt-12"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.3 }}
@@ -223,7 +223,11 @@ const Destinations = () => {
                     <button
                       onClick={() => handlePageChange(currentPage - 1)}
                       disabled={currentPage === 1}
-                      className={`px-4 py-2 rounded-lg ${currentPage === 1 ? 'bg-gray-200 text-gray-500 cursor-not-allowed' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'}`}
+                      className={`px-4 py-2 rounded-lg ${
+                        currentPage === 1 
+                          ? 'bg-gray-200 text-gray-500 cursor-not-allowed' 
+                          : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      }`}
                     >
                       Previous
                     </button>
@@ -231,26 +235,28 @@ const Destinations = () => {
                     {[...Array(totalPages)].map((_, index) => {
                       const pageNumber = index + 1;
                       return (
-                        <motion.button
+                        <button
                           key={pageNumber}
                           onClick={() => handlePageChange(pageNumber)}
-                          className={`w-10 h-10 rounded-full ${currentPage === pageNumber ? 'bg-green-600 text-white' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'}`}
-                          initial={{ opacity: 0, y: 10 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ duration: 0.3, delay: index * 0.05 }}
-                          viewport={{ once: true }}
-                          whileHover={{ scale: 1.1 }}
-                          whileTap={{ scale: 0.95 }}
+                          className={`w-10 h-10 rounded-full ${
+                            currentPage === pageNumber
+                              ? 'bg-green-600 text-white'
+                              : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                          }`}
                         >
                           {pageNumber}
-                        </motion.button>
+                        </button>
                       );
                     })}
                     
                     <button
                       onClick={() => handlePageChange(currentPage + 1)}
                       disabled={currentPage === totalPages}
-                      className={`px-4 py-2 rounded-lg ${currentPage === totalPages ? 'bg-gray-200 text-gray-500 cursor-not-allowed' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'}`}
+                      className={`px-4 py-2 rounded-lg ${
+                        currentPage === totalPages 
+                          ? 'bg-gray-200 text-gray-500 cursor-not-allowed' 
+                          : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      }`}
                     >
                       Next
                     </button>
@@ -259,6 +265,84 @@ const Destinations = () => {
               )}
             </>
           )}
+        </div>
+      </motion.section>
+      
+      {/* Featured Regions */}
+      <motion.section 
+        className="py-16 bg-gray-100"
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+      >
+        <div className="container mx-auto px-4">
+          <motion.div 
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Explore by Region</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Discover the unique attractions and cultural heritage of Afghanistan's diverse regions
+            </p>
+          </motion.div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                name: "Central Highlands",
+                description: "Rugged mountain terrain with ancient fortresses and traditional villages",
+                image: "/images/region1.jpg",
+                destinations: 12
+              },
+              {
+                name: "Northern Plains",
+                description: "Fertile agricultural lands and historic Silk Road cities",
+                image: "/images/region2.jpg",
+                destinations: 8
+              },
+              {
+                name: "Western Mountains",
+                description: "Dramatic peaks and culturally rich Persian-influenced cities",
+                image: "/images/region3.jpg",
+                destinations: 10
+              }
+            ].map((region, index) => (
+              <motion.div 
+                key={index}
+                className="bg-white rounded-xl overflow-hidden shadow-lg"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <div className="h-48 relative">
+                  <img 
+                    src={region.image} 
+                    alt={region.name} 
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-black bg-opacity-30"></div>
+                  <h3 className="absolute bottom-4 left-4 text-xl font-bold text-white">{region.name}</h3>
+                </div>
+                <div className="p-6">
+                  <p className="text-gray-600 mb-4">{region.description}</p>
+                  <div className="flex justify-between items-center">
+                    <span className="text-gray-500">{region.destinations} destinations</span>
+                    <a 
+                      href={`/destinations?region=${region.name}`} 
+                      className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg transition-colors"
+                    >
+                      Explore
+                    </a>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </motion.section>
     </div>
