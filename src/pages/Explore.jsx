@@ -193,17 +193,13 @@ const Explore = () => {
                   <div className="w-4 h-4 rounded bg-blue-100 border border-blue-300 mr-2"></div>
                   <span className="text-gray-700 text-sm">Major Cities</span>
                 </div>
-                <div className="flex items-center">
-                  <div className="w-4 h-4 rounded bg-yellow-100 border border-yellow-300 mr-2"></div>
-                  <span className="text-gray-700 text-sm">UNESCO Sites</span>
-                </div>
               </motion.div>
             </motion.div>
           </div>
         </div>
       </motion.section>
       
-      {/* Province List */}
+      {/* Regions Overview */}
       <motion.section 
         className="py-16 bg-white"
         initial={{ opacity: 0, y: 30 }}
@@ -219,37 +215,60 @@ const Explore = () => {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">All Provinces</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Afghanistan's Regions</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Discover information about all 34 provinces of Afghanistan
+              Discover the unique characteristics of each region
             </p>
           </motion.div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {provinces.map((province, index) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              {
+                name: "Central Highlands",
+                description: "Rugged mountain terrain with ancient fortresses and traditional villages",
+                image: "/images/region1.jpg"
+              },
+              {
+                name: "Northern Plains",
+                description: "Fertile agricultural lands and historic Silk Road cities",
+                image: "/images/region2.jpg"
+              },
+              {
+                name: "Western Mountains",
+                description: "Dramatic peaks and culturally rich Persian-influenced cities",
+                image: "/images/region3.jpg"
+              },
+              {
+                name: "Southern Deserts",
+                description: "Vast desert landscapes and historic trading centers",
+                image: "/images/region4.jpg"
+              }
+            ].map((region, index) => (
               <motion.div 
-                key={province.id} 
-                className="bg-gray-50 rounded-lg border border-gray-200 p-6 hover:shadow-md transition-shadow cursor-pointer"
-                onClick={() => setSelectedProvince(province)}
+                key={index}
+                className="bg-gray-50 rounded-xl overflow-hidden shadow-lg"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                whileHover={{ y: -5 }}
               >
-                <h3 className="text-xl font-bold text-gray-800 mb-2">{province.name}</h3>
-                <p className="text-gray-600 line-clamp-2">{province.description}</p>
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {province.highlights.slice(0, 2).map((highlight, index) => (
-                    <span key={index} className="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">
-                      {highlight}
-                    </span>
-                  ))}
-                  {province.highlights.length > 2 && (
-                    <span className="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">
-                      +{province.highlights.length - 2} more
-                    </span>
-                  )}
+                <div className="h-48 relative">
+                  <img 
+                    src={region.image} 
+                    alt={region.name} 
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-black bg-opacity-30"></div>
+                  <h3 className="absolute bottom-4 left-4 text-xl font-bold text-white">{region.name}</h3>
+                </div>
+                <div className="p-6">
+                  <p className="text-gray-600">{region.description}</p>
+                  <button className="mt-4 text-green-600 hover:text-green-800 font-medium flex items-center">
+                    Learn more
+                    <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </button>
                 </div>
               </motion.div>
             ))}
