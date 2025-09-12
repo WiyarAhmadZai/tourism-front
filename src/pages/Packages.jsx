@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import PackageCard from '../components/cards/PackageCard';
+import { motion } from 'framer-motion';
 
 const Packages = () => {
-  // Dummy data for packages
+  // Using images from the public folder
   const allPackages = [
     {
       id: 1,
       name: "Cultural Heritage Tour",
       description: "Explore the ancient cities and cultural sites of Afghanistan including Kabul, Herat, and Bamiyan.",
-      image: "/images/package1.jpg",
+      image: "/images/IMG_3629.JPG",
       price: 899,
       duration: "7 days",
       rating: 5,
@@ -19,7 +20,7 @@ const Packages = () => {
       id: 2,
       name: "Mountain Adventure",
       description: "Hiking and trekking through the beautiful Hindu Kush mountains with stunning views and local experiences.",
-      image: "/images/package2.jpg",
+      image: "/images/wp11994780.jpg",
       price: 1299,
       duration: "10 days",
       rating: 4,
@@ -30,7 +31,7 @@ const Packages = () => {
       id: 3,
       name: "Desert Exploration",
       description: "Discover the unique desert landscapes of southern Afghanistan and experience traditional nomad culture.",
-      image: "/images/package3.jpg",
+      image: "/images/wp5419943.jpg",
       price: 699,
       duration: "5 days",
       rating: 4,
@@ -41,7 +42,7 @@ const Packages = () => {
       id: 4,
       name: "Northern Circuit",
       description: "Visit the historic cities of Mazar-i-Sharif, Balkh, and explore the ancient Buddhist sites.",
-      image: "/images/package4.jpg",
+      image: "/images/648491.jpg",
       price: 799,
       duration: "6 days",
       rating: 5,
@@ -52,7 +53,7 @@ const Packages = () => {
       id: 5,
       name: "Kabul City Experience",
       description: "Immerse yourself in the vibrant capital city with museum visits, bazaars, and cultural experiences.",
-      image: "/images/package5.jpg",
+      image: "/images/IMG.jpg",
       price: 499,
       duration: "4 days",
       rating: 4,
@@ -63,7 +64,7 @@ const Packages = () => {
       id: 6,
       name: "Jewels of the Silk Road",
       description: "Follow the ancient trade routes through Herat, Balkh, and other historic trading centers.",
-      image: "/images/package6.jpg",
+      image: "/images/ddd.jpg",
       price: 1099,
       duration: "8 days",
       rating: 5,
@@ -133,21 +134,49 @@ const Packages = () => {
   return (
     <div>
       {/* Hero Section */}
-      <div className="relative h-96 flex items-center justify-center overflow-hidden bg-gray-800">
+      <motion.div 
+        className="relative h-96 flex items-center justify-center overflow-hidden bg-gray-800"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+      >
         <div className="absolute inset-0 bg-black bg-opacity-60"></div>
         <div className="relative z-10 text-center px-4">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Tour Packages</h1>
-          <p className="text-xl text-gray-200 max-w-3xl mx-auto">
+          <motion.h1 
+            className="text-4xl md:text-5xl font-bold text-white mb-4"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            Tour Packages
+          </motion.h1>
+          <motion.p 
+            className="text-xl text-gray-200 max-w-3xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
             Curated experiences for unforgettable journeys through Afghanistan
-          </p>
+          </motion.p>
         </div>
-      </div>
+      </motion.div>
       
       {/* Filter Section */}
-      <section className="py-8 bg-gray-100">
+      <motion.section 
+        className="py-8 bg-gray-100"
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+      >
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
-            <div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              viewport={{ once: true }}
+            >
               <input
                 type="text"
                 placeholder="Search packages..."
@@ -155,9 +184,14 @@ const Packages = () => {
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
-            </div>
+            </motion.div>
             
-            <div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
               <select
                 className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-600"
                 value={selectedRegion}
@@ -168,9 +202,14 @@ const Packages = () => {
                   <option key={region} value={region}>{region}</option>
                 ))}
               </select>
-            </div>
+            </motion.div>
             
-            <div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              viewport={{ once: true }}
+            >
               <select
                 className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-600"
                 value={priceRange}
@@ -182,9 +221,14 @@ const Packages = () => {
                 <option value="1000-2000">$1000 - $2000</option>
                 <option value="2000-10000">Over $2000</option>
               </select>
-            </div>
+            </motion.div>
             
-            <div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              viewport={{ once: true }}
+            >
               <select
                 className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-600"
                 value={duration}
@@ -199,9 +243,14 @@ const Packages = () => {
                 <option value="8 days">8 days</option>
                 <option value="10 days">10 days</option>
               </select>
-            </div>
+            </motion.div>
             
-            <div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+              viewport={{ once: true }}
+            >
               <select
                 className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-600"
                 value={sortBy}
@@ -213,44 +262,96 @@ const Packages = () => {
                 <option value="duration">Duration</option>
                 <option value="rating">Rating</option>
               </select>
-            </div>
+            </motion.div>
           </div>
         </div>
-      </section>
+      </motion.section>
       
       {/* Packages Grid */}
-      <section className="py-16 bg-white">
+      <motion.section 
+        className="py-16 bg-white"
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+      >
         <div className="container mx-auto px-4">
           {filteredPackages.length === 0 ? (
-            <div className="text-center py-12">
+            <motion.div 
+              className="text-center py-12"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
               <h3 className="text-2xl font-bold text-gray-800 mb-4">No packages found</h3>
               <p className="text-gray-600">Try adjusting your search or filter criteria</p>
-            </div>
+            </motion.div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {filteredPackages.map((tourPackage) => (
-                <PackageCard key={tourPackage.id} tourPackage={tourPackage} />
+            <motion.div 
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              {filteredPackages.map((tourPackage, index) => (
+                <motion.div
+                  key={tourPackage.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                >
+                  <PackageCard tourPackage={tourPackage} />
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           )}
         </div>
-      </section>
+      </motion.section>
       
       {/* Call to Action */}
-      <section className="py-16 bg-blue-600 text-white">
+      <motion.section 
+        className="py-16 bg-blue-600 text-white"
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+      >
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Customize Your Own Adventure</h2>
-          <p className="text-xl text-blue-100 max-w-3xl mx-auto mb-8">
+          <motion.h2 
+            className="text-3xl md:text-4xl font-bold mb-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            Customize Your Own Adventure
+          </motion.h2>
+          <motion.p 
+            className="text-xl text-blue-100 max-w-3xl mx-auto mb-8"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
             Don't see what you're looking for? Our travel experts can create a personalized itinerary just for you.
-          </p>
-          <a 
+          </motion.p>
+          <motion.a 
             href="/contact" 
             className="inline-block bg-white text-blue-600 hover:bg-gray-100 font-bold py-3 px-8 rounded-lg transition-colors"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            viewport={{ once: true }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
             Request Custom Package
-          </a>
+          </motion.a>
         </div>
-      </section>
+      </motion.section>
     </div>
   );
 };
