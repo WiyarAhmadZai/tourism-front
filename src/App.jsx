@@ -18,7 +18,7 @@ import Register from './pages/Register';
 
 function App() {
   return (
-    <div className="min-h-screen flex flex-col bg-background">
+    <div className="min-h-screen flex flex-col">
       <HeaderFooter />
       
       {/* Main Content */}
