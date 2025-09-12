@@ -17,45 +17,13 @@ import './assets/css/style.css';
 import './assets/css/vendors.css';
 
 function App() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  
-  // Close menu when clicking outside
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (isMenuOpen && !event.target.closest('.main-menu') && !event.target.closest('.cmn-toggle-switch')) {
-        setIsMenuOpen(false);
-      }
-    };
-    
-    document.addEventListener('click', handleClickOutside);
-    return () => {
-      document.removeEventListener('click', handleClickOutside);
-    };
-  }, [isMenuOpen]);
-  
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-  
-  const closeMenu = () => {
-    setIsMenuOpen(false);
-  };
-
   return (
-    <LanguageProvider>
-      <Router>
-        <div className="App">
-          <Routes>
-            <Route path="/" element={<Home isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} closeMenu={closeMenu} />} />
-            <Route path="/about" element={<About isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} closeMenu={closeMenu} />} />
-            <Route path="/tours" element={<Tours isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} closeMenu={closeMenu} />} />
-            <Route path="/hotels" element={<Hotels isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} closeMenu={closeMenu} />} />
-            <Route path="/restaurants" element={<Restaurants isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} closeMenu={closeMenu} />} />
-            <Route path="/contact" element={<Contact isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} closeMenu={closeMenu} />} />
-          </Routes>
-        </div>
-      </Router>
-    </LanguageProvider>
+    <div className="App">
+      <header className="App-header">
+        <h1>Welcome to Afghanistan Tourism</h1>
+        <p>This is a simple React application.</p>
+      </header>
+    </div>
   );
 }
 
