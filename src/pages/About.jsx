@@ -1,30 +1,74 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 const About = () => {
   return (
     <div>
       {/* Hero Section */}
-      <div className="relative h-96 flex items-center justify-center overflow-hidden bg-gray-800">
+      <motion.div 
+        className="relative h-96 flex items-center justify-center overflow-hidden bg-gray-800"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+      >
         <div className="absolute inset-0 bg-black bg-opacity-60"></div>
         <div className="relative z-10 text-center px-4">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">About Afghanistan Tourism</h1>
-          <p className="text-xl text-gray-200 max-w-3xl mx-auto">
+          <motion.h1 
+            className="text-4xl md:text-5xl font-bold text-white mb-4"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            About Afghanistan Tourism
+          </motion.h1>
+          <motion.p 
+            className="text-xl text-gray-200 max-w-3xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
             Promoting sustainable tourism and showcasing the natural wonders, historical sites, and cultural experiences of Afghanistan
-          </p>
+          </motion.p>
         </div>
-      </div>
+      </motion.div>
       
       {/* Mission Statement */}
-      <section className="py-16 bg-white">
+      <motion.section 
+        className="py-16 bg-white"
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+      >
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">Our Mission</h2>
-            <p className="text-xl text-gray-600 mb-8">
+            <motion.h2 
+              className="text-3xl md:text-4xl font-bold text-gray-800 mb-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              Our Mission
+            </motion.h2>
+            <motion.p 
+              className="text-xl text-gray-600 mb-8"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
               Afghanistan Tourism is dedicated to promoting responsible and sustainable tourism that benefits local communities while preserving our nation's rich cultural and natural heritage for future generations.
-            </p>
+            </motion.p>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-              <div className="bg-gray-50 rounded-lg p-6">
+              <motion.div 
+                className="bg-gray-50 rounded-lg p-6"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                viewport={{ once: true }}
+              >
                 <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
                   <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
@@ -34,9 +78,15 @@ const About = () => {
                 <p className="text-gray-600">
                   We work directly with local communities to ensure tourism benefits reach those who need it most.
                 </p>
-              </div>
+              </motion.div>
               
-              <div className="bg-gray-50 rounded-lg p-6">
+              <motion.div 
+                className="bg-gray-50 rounded-lg p-6"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                viewport={{ once: true }}
+              >
                 <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
                   <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
@@ -46,9 +96,15 @@ const About = () => {
                 <p className="text-gray-600">
                   We promote tourism that respects and preserves Afghanistan's rich cultural heritage.
                 </p>
-              </div>
+              </motion.div>
               
-              <div className="bg-gray-50 rounded-lg p-6">
+              <motion.div 
+                className="bg-gray-50 rounded-lg p-6"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                viewport={{ once: true }}
+              >
                 <div className="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-6">
                   <svg className="w-8 h-8 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
@@ -58,47 +114,122 @@ const About = () => {
                 <p className="text-gray-600">
                   We advocate for tourism practices that protect Afghanistan's natural landscapes and wildlife.
                 </p>
-              </div>
+              </motion.div>
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
       
       {/* Our Story */}
-      <section className="py-16 bg-gray-100">
+      <motion.section 
+        className="py-16 bg-gray-100"
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+      >
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row gap-12 items-center">
-            <div className="md:w-1/2">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">Our Story</h2>
-              <p className="text-gray-600 mb-6">
+            <motion.div 
+              className="md:w-1/2"
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              <motion.h2 
+                className="text-3xl md:text-4xl font-bold text-gray-800 mb-6"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: true }}
+              >
+                Our Story
+              </motion.h2>
+              <motion.p 
+                className="text-gray-600 mb-6"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                viewport={{ once: true }}
+              >
                 Founded in 2020, Afghanistan Tourism emerged from a group of passionate locals who recognized the potential for responsible tourism to contribute to the country's rebuilding efforts. Our founders, with decades of combined experience in hospitality, conservation, and cultural preservation, envisioned a tourism model that would showcase Afghanistan's beauty while directly benefiting local communities.
-              </p>
-              <p className="text-gray-600 mb-6">
+              </motion.p>
+              <motion.p 
+                className="text-gray-600 mb-6"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                viewport={{ once: true }}
+              >
                 Over the years, we have developed partnerships with communities across Afghanistan, from the ancient cities of Herat and Balkh to the mountain villages of the Hindu Kush. Our team works tirelessly to create authentic experiences that allow visitors to connect with Afghan culture while ensuring that tourism revenue supports local economies.
-              </p>
-              <p className="text-gray-600">
+              </motion.p>
+              <motion.p 
+                className="text-gray-600"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                viewport={{ once: true }}
+              >
                 Today, we operate tours in 12 provinces and have directly contributed to the employment of over 500 local guides, artisans, and hospitality workers. We are proud to be part of Afghanistan's journey toward a more sustainable and inclusive future.
-              </p>
-            </div>
-            <div className="md:w-1/2">
-              <div className="bg-gray-200 border-2 border-dashed rounded-xl w-full h-96" />
-            </div>
+              </motion.p>
+            </motion.div>
+            <motion.div 
+              className="md:w-1/2"
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              {/* Using an image from the public folder */}
+              <img 
+                src="/images/abstract-architecture-background-brick-194096.jpg" 
+                alt="Afghanistan landscape" 
+                className="w-full h-96 object-cover rounded-xl shadow-lg"
+              />
+            </motion.div>
           </div>
         </div>
-      </section>
+      </motion.section>
       
       {/* Values */}
-      <section className="py-16 bg-white">
+      <motion.section 
+        className="py-16 bg-white"
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+      >
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Our Core Values</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+            <motion.h2 
+              className="text-3xl md:text-4xl font-bold text-gray-800 mb-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              Our Core Values
+            </motion.h2>
+            <motion.p 
+              className="text-gray-600 max-w-2xl mx-auto"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              viewport={{ once: true }}
+            >
               The principles that guide everything we do
-            </p>
+            </motion.p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <div className="flex">
+            <motion.div 
+              className="flex"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              viewport={{ once: true }}
+            >
               <div className="mr-6">
                 <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center">
                   <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -112,9 +243,15 @@ const About = () => {
                   We operate with honesty and transparency in all our dealings with travelers, partners, and communities.
                 </p>
               </div>
-            </div>
+            </motion.div>
             
-            <div className="flex">
+            <motion.div 
+              className="flex"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
               <div className="mr-6">
                 <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center">
                   <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -128,9 +265,15 @@ const About = () => {
                   Local communities are at the heart of everything we do, ensuring tourism benefits reach those who need it most.
                 </p>
               </div>
-            </div>
+            </motion.div>
             
-            <div className="flex">
+            <motion.div 
+              className="flex"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              viewport={{ once: true }}
+            >
               <div className="mr-6">
                 <div className="w-12 h-12 rounded-full bg-yellow-100 flex items-center justify-center">
                   <svg className="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -144,9 +287,15 @@ const About = () => {
                   We are committed to preserving Afghanistan's natural and cultural heritage for future generations.
                 </p>
               </div>
-            </div>
+            </motion.div>
             
-            <div className="flex">
+            <motion.div 
+              className="flex"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              viewport={{ once: true }}
+            >
               <div className="mr-6">
                 <div className="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center">
                   <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -160,24 +309,55 @@ const About = () => {
                   We provide genuine experiences that allow visitors to connect deeply with Afghan culture and people.
                 </p>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
-      </section>
+      </motion.section>
       
       {/* Team Section */}
-      <section className="py-16 bg-gray-100">
+      <motion.section 
+        className="py-16 bg-gray-100"
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+      >
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Meet Our Team</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+            <motion.h2 
+              className="text-3xl md:text-4xl font-bold text-gray-800 mb-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              Meet Our Team
+            </motion.h2>
+            <motion.p 
+              className="text-gray-600 max-w-2xl mx-auto"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              viewport={{ once: true }}
+            >
               The passionate individuals behind Afghanistan Tourism
-            </p>
+            </motion.p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="bg-white rounded-lg overflow-hidden shadow-md text-center">
-              <div className="bg-gray-200 border-2 border-dashed rounded-xl w-full h-64" />
+            <motion.div 
+              className="bg-white rounded-lg overflow-hidden shadow-md text-center"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              viewport={{ once: true }}
+            >
+              {/* Using an image from the public folder */}
+              <img 
+                src="/images/fahrul-azmi-gyKmF0vnfBs-unsplash.jpg" 
+                alt="Ahmad Farhad" 
+                className="w-full h-64 object-cover"
+              />
               <div className="p-6">
                 <h3 className="text-xl font-bold text-gray-800">Ahmad Farhad</h3>
                 <p className="text-green-600 mb-3">Founder & CEO</p>
@@ -185,10 +365,21 @@ const About = () => {
                   With 15 years of experience in hospitality and cultural preservation, Ahmad leads our mission to promote sustainable tourism.
                 </p>
               </div>
-            </div>
+            </motion.div>
             
-            <div className="bg-white rounded-lg overflow-hidden shadow-md text-center">
-              <div className="bg-gray-200 border-2 border-dashed rounded-xl w-full h-64" />
+            <motion.div 
+              className="bg-white rounded-lg overflow-hidden shadow-md text-center"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              {/* Using an image from the public folder */}
+              <img 
+                src="/images/adli-wahid-3-QB-YKxTKY-unsplash.jpg" 
+                alt="Fatima Noor" 
+                className="w-full h-64 object-cover"
+              />
               <div className="p-6">
                 <h3 className="text-xl font-bold text-gray-800">Fatima Noor</h3>
                 <p className="text-green-600 mb-3">Operations Director</p>
@@ -196,10 +387,21 @@ const About = () => {
                   Fatima oversees our tour operations and ensures that every visitor has an authentic and memorable experience.
                 </p>
               </div>
-            </div>
+            </motion.div>
             
-            <div className="bg-white rounded-lg overflow-hidden shadow-md text-center">
-              <div className="bg-gray-200 border-2 border-dashed rounded-xl w-full h-64" />
+            <motion.div 
+              className="bg-white rounded-lg overflow-hidden shadow-md text-center"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              viewport={{ once: true }}
+            >
+              {/* Using an image from the public folder */}
+              <img 
+                src="/images/iron-man-armor-of-innovation-ih.jpg" 
+                alt="Mohammad Yusuf" 
+                className="w-full h-64 object-cover"
+              />
               <div className="p-6">
                 <h3 className="text-xl font-bold text-gray-800">Mohammad Yusuf</h3>
                 <p className="text-green-600 mb-3">Community Relations</p>
@@ -207,10 +409,21 @@ const About = () => {
                   Mohammad works directly with local communities to ensure tourism benefits are distributed fairly and sustainably.
                 </p>
               </div>
-            </div>
+            </motion.div>
             
-            <div className="bg-white rounded-lg overflow-hidden shadow-md text-center">
-              <div className="bg-gray-200 border-2 border-dashed rounded-xl w-full h-64" />
+            <motion.div 
+              className="bg-white rounded-lg overflow-hidden shadow-md text-center"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              viewport={{ once: true }}
+            >
+              {/* Using an image from the public folder */}
+              <img 
+                src="/images/white-rose-hd.jpg" 
+                alt="Zahra Khan" 
+                className="w-full h-64 object-cover"
+              />
               <div className="p-6">
                 <h3 className="text-xl font-bold text-gray-800">Zahra Khan</h3>
                 <p className="text-green-600 mb-3">Marketing Director</p>
@@ -218,10 +431,10 @@ const About = () => {
                   Zahra leads our efforts to showcase Afghanistan's beauty to the world through compelling storytelling and digital marketing.
                 </p>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
-      </section>
+      </motion.section>
     </div>
   );
 };
