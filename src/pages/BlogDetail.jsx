@@ -199,91 +199,98 @@ const BlogDetail = () => {
                   ))}
                 </div>
               </motion.div>
+              
+              {/* Comments Section */}
+              <motion.div 
+                className="mt-12 pt-8 border-t border-gray-200"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.5 }}
+                viewport={{ once: true }}
+              >
+                <h3 className="text-2xl font-bold text-gray-800 mb-6">Comments</h3>
+                
+                <div className="bg-gray-50 rounded-lg p-6 mb-6">
+                  <h4 className="text-lg font-bold text-gray-800 mb-4">Leave a Comment</h4>
+                  <form className="space-y-4">
+                    <div>
+                      <label htmlFor="name" className="block text-gray-700 mb-2">Name</label>
+                      <input
+                        type="text"
+                        id="name"
+                        className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-600"
+                        placeholder="Your name"
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="email" className="block text-gray-700 mb-2">Email</label>
+                      <input
+                        type="email"
+                        id="email"
+                        className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-600"
+                        placeholder="Your email"
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="comment" className="block text-gray-700 mb-2">Comment</label>
+                      <textarea
+                        id="comment"
+                        rows={4}
+                        className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-600"
+                        placeholder="Your comment"
+                      ></textarea>
+                    </div>
+                    <button
+                      type="submit"
+                      className="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-6 rounded-lg transition-colors"
+                    >
+                      Post Comment
+                    </button>
+                  </form>
+                </div>
+              </motion.div>
             </div>
             
             {/* Sidebar */}
             <div className="lg:w-1/3">
-              <motion.div 
-                className="bg-gray-50 rounded-lg p-6 sticky top-24"
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                viewport={{ once: true }}
-              >
+              <div className="bg-gray-50 rounded-lg p-6 sticky top-24">
                 <h3 className="text-xl font-bold text-gray-800 mb-4">About the Author</h3>
-                
                 <div className="flex items-center mb-4">
-                  <motion.img 
+                  <img 
                     src={post.author.avatar} 
                     alt={post.author.name} 
                     className="w-16 h-16 rounded-full mr-4"
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.5, delay: 0.3 }}
-                    viewport={{ once: true }}
                   />
                   <div>
-                    <div className="font-bold text-gray-800">{post.author.name}</div>
-                    <div className="text-gray-600 text-sm">{post.date}</div>
+                    <h4 className="font-bold text-gray-800">{post.author.name}</h4>
+                    <p className="text-gray-600 text-sm">{post.author.bio}</p>
                   </div>
                 </div>
                 
-                <p className="text-gray-600 mb-6">{post.author.bio}</p>
-                
-                <a 
-                  href="/blog" 
-                  className="inline-block bg-gray-800 hover:bg-black text-white font-bold py-2 px-4 rounded-lg transition-colors"
-                >
-                  View All Articles
-                </a>
-              </motion.div>
-              
-              {/* Related Posts */}
-              <motion.div 
-                className="mt-8"
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                viewport={{ once: true }}
-              >
-                <h3 className="text-xl font-bold text-gray-800 mb-4">Related Articles</h3>
+                <h3 className="text-xl font-bold text-gray-800 mb-4 mt-8">Related Articles</h3>
                 <div className="space-y-4">
-                  {relatedPosts.map((relatedPost, index) => (
+                  {relatedPosts.map((relatedPost) => (
                     <motion.div 
                       key={relatedPost.id} 
-                      className="border border-gray-200 rounded-lg overflow-hidden"
+                      className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow"
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
+                      transition={{ duration: 0.5 }}
                       viewport={{ once: true }}
+                      whileHover={{ y: -5 }}
                     >
-                      <div className="flex">
-                        <div className="w-24 h-24">
-                          <img 
-                            src={relatedPost.image} 
-                            alt={relatedPost.title} 
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
-                        <div className="p-3 flex-grow">
-                          <h4 className="font-bold text-gray-800 text-sm line-clamp-2">{relatedPost.title}</h4>
-                          <div className="flex items-center mt-2 text-gray-500 text-xs">
-                            <span>{relatedPost.author}</span>
-                            <span className="mx-2">•</span>
-                            <span>{relatedPost.date}</span>
-                          </div>
-                          <a 
-                            href={`/blog/${relatedPost.id}`} 
-                            className="text-green-600 hover:text-green-800 text-sm font-medium mt-2 inline-block"
-                          >
-                            Read More
-                          </a>
-                        </div>
-                      </div>
+                      <img 
+                        src={relatedPost.image} 
+                        alt={relatedPost.title} 
+                        className="w-full h-32 object-cover rounded-lg mb-3"
+                      />
+                      <h4 className="font-bold text-gray-800 mb-1">{relatedPost.title}</h4>
+                      <p className="text-gray-600 text-sm mb-2">{relatedPost.excerpt}</p>
+                      <div className="text-gray-500 text-xs">{relatedPost.date} · {relatedPost.author}</div>
                     </motion.div>
                   ))}
                 </div>
-              </motion.div>
+              </div>
             </div>
           </div>
         </div>
