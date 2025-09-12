@@ -3,10 +3,7 @@ import Hero from '../components/layout/Hero';
 import DestinationCard from '../components/cards/DestinationCard';
 import PackageCard from '../components/cards/PackageCard';
 import PostCard from '../components/cards/PostCard';
-import 'aos/dist/aos.css';
-import AOS from 'aos';
-
-AOS.init();
+import { motion } from 'framer-motion';
 
 const Home = () => {
   // Dummy data for featured destinations
@@ -102,133 +99,187 @@ const Home = () => {
       <Hero />
       
       {/* Featured Destinations */}
-      <section className="py-16 bg-white" data-aos="fade-up">
+      <motion.section 
+        className="py-16 bg-white"
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+      >
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
+          <motion.div 
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
             <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Featured Destinations</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Discover the most beautiful and historically significant places in Afghanistan
             </p>
-          </div>
+          </motion.div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {featuredDestinations.map((destination) => (
-              <DestinationCard key={destination.id} destination={destination} />
+            {featuredDestinations.map((destination, index) => (
+              <motion.div
+                key={destination.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <DestinationCard destination={destination} />
+              </motion.div>
             ))}
           </div>
           
-          <div className="text-center mt-12">
+          <motion.div 
+            className="text-center mt-12"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            viewport={{ once: true }}
+          >
             <a 
               href="/destinations" 
               className="inline-block bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-lg transition-colors"
             >
               View All Destinations
             </a>
-          </div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
       
       {/* Top Packages */}
-      <section className="py-16 bg-gray-100" data-aos="fade-up">
+      <motion.section 
+        className="py-16 bg-gray-100"
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+        viewport={{ once: true }}
+      >
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
+          <motion.div 
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
             <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Top Tour Packages</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Curated experiences for unforgettable journeys through Afghanistan
             </p>
-          </div>
+          </motion.div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {topPackages.map((tourPackage) => (
-              <PackageCard key={tourPackage.id} tourPackage={tourPackage} />
+            {topPackages.map((tourPackage, index) => (
+              <motion.div
+                key={tourPackage.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <PackageCard tourPackage={tourPackage} />
+              </motion.div>
             ))}
           </div>
           
-          <div className="text-center mt-12">
+          <motion.div 
+            className="text-center mt-12"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            viewport={{ once: true }}
+          >
             <a 
               href="/packages" 
               className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg transition-colors"
             >
               View All Packages
             </a>
-          </div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
       
       {/* Why Visit Afghanistan */}
-      <section className="py-16 bg-white" data-aos="fade-up">
+      <motion.section 
+        className="py-16 bg-white"
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.3 }}
+        viewport={{ once: true }}
+      >
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
+          <motion.div 
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
             <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Why Visit Afghanistan?</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Experience the unique beauty and rich heritage of our nation
             </p>
-          </div>
+          </motion.div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="bg-green-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
-                <svg className="w-10 h-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-3">Rich Culture</h3>
-              <p className="text-gray-600">
-                Immerse yourself in thousands of years of history and tradition
-              </p>
-            </div>
-            
-            <div className="text-center">
-              <div className="bg-blue-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
-                <svg className="w-10 h-10 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-3">Historic Sites</h3>
-              <p className="text-gray-600">
-                Explore ancient cities, monuments, and archaeological wonders
-              </p>
-            </div>
-            
-            <div className="text-center">
-              <div className="bg-yellow-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
-                <svg className="w-10 h-10 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-3">Natural Beauty</h3>
-              <p className="text-gray-600">
-                Breathtaking landscapes from mountains to deserts to pristine lakes
-              </p>
-            </div>
-            
-            <div className="text-center">
-              <div className="bg-purple-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
-                <svg className="w-10 h-10 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-3">Warm Hospitality</h3>
-              <p className="text-gray-600">
-                Experience the legendary Afghan hospitality and kindness
-              </p>
-            </div>
+            {[1, 2, 3, 4].map((item, index) => (
+              <motion.div
+                key={item}
+                className="text-center"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <div className="bg-green-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <svg className="w-10 h-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold text-gray-800 mb-3">Rich Culture</h3>
+                <p className="text-gray-600">
+                  Immerse yourself in thousands of years of history and tradition
+                </p>
+              </motion.div>
+            ))}
           </div>
         </div>
-      </section>
+      </motion.section>
       
       {/* Testimonials */}
-      <section className="py-16 bg-gray-100" data-aos="fade-up">
+      <motion.section 
+        className="py-16 bg-gray-100"
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.4 }}
+        viewport={{ once: true }}
+      >
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
+          <motion.div 
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
             <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Traveler Experiences</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Hear from visitors who have discovered the beauty of Afghanistan
             </p>
-          </div>
+          </motion.div>
           
-          <div className="max-w-4xl mx-auto">
+          <motion.div 
+            className="max-w-4xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
             <div className="bg-white rounded-xl shadow-lg p-8">
               <div className="flex items-center mb-6">
                 <div className="bg-gray-200 border-2 border-dashed rounded-xl w-16 h-16" />
@@ -250,41 +301,79 @@ const Home = () => {
                 ))}
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
       
       {/* Blog Section */}
-      <section className="py-16 bg-white" data-aos="fade-up">
+      <motion.section 
+        className="py-16 bg-white"
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.5 }}
+        viewport={{ once: true }}
+      >
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
+          <motion.div 
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
             <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Latest from our Blog</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Stories, tips, and insights from Afghanistan and its travelers
             </p>
-          </div>
+          </motion.div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {blogPosts.map((post) => (
-              <PostCard key={post.id} post={post} />
+            {blogPosts.map((post, index) => (
+              <motion.div
+                key={post.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <PostCard post={post} />
+              </motion.div>
             ))}
           </div>
           
-          <div className="text-center mt-12">
+          <motion.div 
+            className="text-center mt-12"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            viewport={{ once: true }}
+          >
             <a 
               href="/blog" 
               className="inline-block bg-gray-800 hover:bg-black text-white font-bold py-3 px-8 rounded-lg transition-colors"
             >
               View All Articles
             </a>
-          </div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
       
       {/* Newsletter */}
-      <section className="py-16 bg-green-600 text-white" data-aos="fade-up">
+      <motion.section 
+        className="py-16 bg-green-600 text-white"
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.6 }}
+        viewport={{ once: true }}
+      >
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
+          <motion.div 
+            className="max-w-3xl mx-auto text-center"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Stay Updated</h2>
             <p className="text-green-100 mb-8">
               Subscribe to our newsletter for the latest travel tips, special offers, and destination guides
@@ -303,9 +392,9 @@ const Home = () => {
                 Subscribe
               </button>
             </form>
-          </div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
     </div>
   );
 };
