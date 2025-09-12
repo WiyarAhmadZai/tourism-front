@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Hero from '../components/layout/Hero';
+import { motion } from 'framer-motion';
 
 const Explore = () => {
   const [selectedProvince, setSelectedProvince] = useState(null);
@@ -46,59 +46,99 @@ const Explore = () => {
   return (
     <div>
       {/* Hero Section */}
-      <div className="relative h-96 flex items-center justify-center overflow-hidden bg-gray-800">
+      <motion.div 
+        className="relative h-96 flex items-center justify-center overflow-hidden bg-gray-800"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+      >
         <div className="absolute inset-0 bg-black bg-opacity-60"></div>
         <div className="relative z-10 text-center px-4">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Explore Afghanistan</h1>
-          <p className="text-xl text-gray-200 max-w-3xl mx-auto">
+          <motion.h1 
+            className="text-4xl md:text-5xl font-bold text-white mb-4"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            Explore Afghanistan
+          </motion.h1>
+          <motion.p 
+            className="text-xl text-gray-200 max-w-3xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
             Discover the provinces and regions of Afghanistan through our interactive map
-          </p>
+          </motion.p>
         </div>
-      </div>
+      </motion.div>
       
       {/* Map Section */}
-      <section className="py-16 bg-gray-100">
+      <motion.section 
+        className="py-16 bg-gray-100"
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+      >
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
+          <motion.div 
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
             <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Interactive Province Map</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Click on any province to learn more about its unique attractions and cultural heritage
             </p>
-          </div>
+          </motion.div>
           
           <div className="max-w-6xl mx-auto">
-            <div className="relative bg-white rounded-xl shadow-lg p-4 md:p-8">
+            <motion.div 
+              className="relative bg-white rounded-xl shadow-lg p-4 md:p-8"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
               {/* Map Container */}
               <div className="relative h-96 md:h-[500px] bg-gray-200 border-2 border-dashed border-gray-300 rounded-lg overflow-hidden">
-                {/* Map Image Placeholder */}
-                <div className="w-full h-full flex items-center justify-center bg-blue-50">
-                  <div className="text-center">
-                    <svg className="w-16 h-16 mx-auto text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
-                    </svg>
-                    <p className="mt-4 text-gray-500">Interactive Map of Afghanistan</p>
-                    <p className="text-sm text-gray-400 mt-2">Map image will be placed at /public/images/map.png</p>
-                  </div>
-                </div>
+                {/* Using an image from the public folder for the map */}
+                <img 
+                  src="/images/abstract-architecture-background-brick-194096.jpg" 
+                  alt="Map of Afghanistan" 
+                  className="w-full h-full object-cover"
+                />
                 
                 {/* Province Markers */}
-                {provinces.map((province) => (
-                  <div
+                {provinces.map((province, index) => (
+                  <motion.div
                     key={province.id}
                     className="absolute transform -translate-x-1/2 -translate-y-1/2 cursor-pointer"
                     style={{ top: province.position.top, left: province.position.left }}
                     onClick={() => setSelectedProvince(province)}
+                    initial={{ opacity: 0, scale: 0 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.3, delay: 0.1 * index }}
+                    whileHover={{ scale: 1.2 }}
                   >
                     <div className="w-6 h-6 rounded-full bg-green-600 border-2 border-white shadow-lg flex items-center justify-center hover:scale-125 transition-transform">
                       <span className="text-white text-xs font-bold">{province.id}</span>
                     </div>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
               
               {/* Province Details Panel */}
               {selectedProvince && (
-                <div className="mt-8 bg-white border border-gray-200 rounded-lg shadow-lg p-6">
+                <motion.div 
+                  className="mt-8 bg-white border border-gray-200 rounded-lg shadow-lg p-6"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5 }}
+                >
                   <div className="flex justify-between items-start">
                     <h3 className="text-2xl font-bold text-gray-800">{selectedProvince.name}</h3>
                     <button 
@@ -134,11 +174,17 @@ const Explore = () => {
                       Explore {selectedProvince.name}
                     </a>
                   </div>
-                </div>
+                </motion.div>
               )}
               
               {/* Map Legend */}
-              <div className="mt-8 flex flex-wrap gap-4">
+              <motion.div 
+                className="mt-8 flex flex-wrap gap-4"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                viewport={{ once: true }}
+              >
                 <div className="flex items-center">
                   <div className="w-4 h-4 rounded-full bg-green-600 mr-2"></div>
                   <span className="text-gray-700 text-sm">Provincial Capitals</span>
@@ -151,28 +197,45 @@ const Explore = () => {
                   <div className="w-4 h-4 rounded bg-yellow-100 border border-yellow-300 mr-2"></div>
                   <span className="text-gray-700 text-sm">UNESCO Sites</span>
                 </div>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           </div>
         </div>
-      </section>
+      </motion.section>
       
       {/* Province List */}
-      <section className="py-16 bg-white">
+      <motion.section 
+        className="py-16 bg-white"
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+      >
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
+          <motion.div 
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
             <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">All Provinces</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Discover information about all 34 provinces of Afghanistan
             </p>
-          </div>
+          </motion.div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {provinces.map((province) => (
-              <div 
+            {provinces.map((province, index) => (
+              <motion.div 
                 key={province.id} 
                 className="bg-gray-50 rounded-lg border border-gray-200 p-6 hover:shadow-md transition-shadow cursor-pointer"
                 onClick={() => setSelectedProvince(province)}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                whileHover={{ y: -5 }}
               >
                 <h3 className="text-xl font-bold text-gray-800 mb-2">{province.name}</h3>
                 <p className="text-gray-600 line-clamp-2">{province.description}</p>
@@ -188,11 +251,11 @@ const Explore = () => {
                     </span>
                   )}
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
-      </section>
+      </motion.section>
     </div>
   );
 };
