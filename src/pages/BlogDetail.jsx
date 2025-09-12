@@ -1,5 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 const BlogDetail = () => {
   const { id } = useParams();
@@ -67,38 +68,81 @@ const BlogDetail = () => {
   return (
     <div>
       {/* Hero Banner */}
-      <div className="relative h-96 md:h-[500px] overflow-hidden">
-        <img 
+      <motion.div 
+        className="relative h-96 md:h-[500px] overflow-hidden"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+      >
+        <motion.img 
           src={post.image} 
           alt={post.title} 
           className="w-full h-full object-cover"
+          initial={{ scale: 1.1 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 1.2 }}
         />
         <div className="absolute inset-0 bg-black bg-opacity-50"></div>
         <div className="absolute bottom-0 left-0 right-0 p-6 md:p-12">
           <div className="container mx-auto">
             <div className="max-w-4xl mx-auto">
-              <span className="bg-green-600 text-white px-3 py-1 rounded-full text-sm font-medium">
+              <motion.span 
+                className="bg-green-600 text-white px-3 py-1 rounded-full text-sm font-medium"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              >
                 {post.category}
-              </span>
-              <h1 className="text-3xl md:text-5xl font-bold text-white mt-4 mb-2">{post.title}</h1>
-              <p className="text-xl text-gray-200">{post.excerpt}</p>
+              </motion.span>
+              <motion.h1 
+                className="text-3xl md:text-5xl font-bold text-white mt-4 mb-2"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+              >
+                {post.title}
+              </motion.h1>
+              <motion.p 
+                className="text-xl text-gray-200"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+              >
+                {post.excerpt}
+              </motion.p>
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
       
       {/* Content Section */}
-      <section className="py-16 bg-white">
+      <motion.section 
+        className="py-16 bg-white"
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+      >
         <div className="container mx-auto px-4">
           <div className="flex flex-col lg:flex-row gap-8 max-w-6xl mx-auto">
             {/* Main Content */}
             <div className="lg:w-2/3">
-              <div className="flex items-center text-gray-600 mb-8">
+              <motion.div 
+                className="flex items-center text-gray-600 mb-8"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                viewport={{ once: true }}
+              >
                 <div className="flex items-center">
-                  <img 
+                  <motion.img 
                     src={post.author.avatar} 
                     alt={post.author.name} 
                     className="w-12 h-12 rounded-full mr-4"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
+                    viewport={{ once: true }}
                   />
                   <div>
                     <div className="font-bold text-gray-800">{post.author.name}</div>
@@ -122,37 +166,61 @@ const BlogDetail = () => {
                     </svg>
                   </a>
                 </div>
-              </div>
+              </motion.div>
               
-              <div 
+              <motion.div 
                 className="prose prose-lg max-w-none"
                 dangerouslySetInnerHTML={{ __html: post.content }}
-              ></div>
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                viewport={{ once: true }}
+              ></motion.div>
               
-              <div className="mt-12 pt-8 border-t border-gray-200">
+              <motion.div 
+                className="mt-12 pt-8 border-t border-gray-200"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                viewport={{ once: true }}
+              >
                 <div className="flex flex-wrap gap-2">
                   {post.tags.map((tag, index) => (
-                    <span 
+                    <motion.span 
                       key={index} 
                       className="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm"
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.3, delay: index * 0.1 }}
+                      viewport={{ once: true }}
                     >
                       #{tag}
-                    </span>
+                    </motion.span>
                   ))}
                 </div>
-              </div>
+              </motion.div>
             </div>
             
             {/* Sidebar */}
             <div className="lg:w-1/3">
-              <div className="bg-gray-50 rounded-lg p-6 sticky top-24">
+              <motion.div 
+                className="bg-gray-50 rounded-lg p-6 sticky top-24"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                viewport={{ once: true }}
+              >
                 <h3 className="text-xl font-bold text-gray-800 mb-4">About the Author</h3>
                 
                 <div className="flex items-center mb-4">
-                  <img 
+                  <motion.img 
                     src={post.author.avatar} 
                     alt={post.author.name} 
                     className="w-16 h-16 rounded-full mr-4"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.5, delay: 0.3 }}
+                    viewport={{ once: true }}
                   />
                   <div>
                     <div className="font-bold text-gray-800">{post.author.name}</div>
@@ -168,14 +236,27 @@ const BlogDetail = () => {
                 >
                   View All Articles
                 </a>
-              </div>
+              </motion.div>
               
               {/* Related Posts */}
-              <div className="mt-8">
+              <motion.div 
+                className="mt-8"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                viewport={{ once: true }}
+              >
                 <h3 className="text-xl font-bold text-gray-800 mb-4">Related Articles</h3>
                 <div className="space-y-4">
-                  {relatedPosts.map((relatedPost) => (
-                    <div key={relatedPost.id} className="border border-gray-200 rounded-lg overflow-hidden">
+                  {relatedPosts.map((relatedPost, index) => (
+                    <motion.div 
+                      key={relatedPost.id} 
+                      className="border border-gray-200 rounded-lg overflow-hidden"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
+                      viewport={{ once: true }}
+                    >
                       <div className="flex">
                         <div className="w-24 h-24">
                           <img 
@@ -199,14 +280,14 @@ const BlogDetail = () => {
                           </a>
                         </div>
                       </div>
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
-              </div>
+              </motion.div>
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
     </div>
   );
 };
