@@ -5,11 +5,6 @@ import './App.css';
 // Import page components
 import Home from './pages/Home';
 
-// Import CSS for the CityTours design
-import './assets/css/bootstrap.min.css';
-import './assets/css/style.css';
-import './assets/css/vendors.css';
-
 function App() {
   return (
     <Router>

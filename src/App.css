@@ -1,128 +1,166 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-/* Custom CSS Variables */
-:root {
-  --primary: #0066cc;
-  --secondary: #004499;
-  --accent: #ffcc00;
+/* Custom styles for hero section */
+.hero-section {
+  position: relative;
+  height: 100vh;
+  min-height: 600px;
+  overflow: hidden;
 }
 
-/* Custom styles */
-.text-primary {
-  color: var(--primary);
+.hero-section .owl-slide {
+  height: 100vh;
+  min-height: 600px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
 }
 
-.bg-primary {
-  background-color: var(--primary);
+.hero-section .opacity-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
 }
 
-.text-secondary {
-  color: var(--secondary);
+.hero-section .slide-text {
+  padding: 20px;
+  max-width: 800px;
 }
 
-.bg-secondary {
-  background-color: var(--secondary);
+.hero-section .slide-text h2 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  line-height: 1.2;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.text-accent {
-  color: var(--accent);
+.hero-section .slide-text p {
+  font-size: 1.25rem;
+  margin-bottom: 30px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
 }
 
-.bg-accent {
-  background-color: var(--accent);
+.hero-section .btn_1 {
+  margin-right: 15px;
+  margin-bottom: 10px;
+  padding: 12px 30px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 30px;
+  transition: all 0.3s ease;
 }
 
-.hover\:bg-secondary:hover {
-  background-color: var(--secondary);
+.hero-section .btn_1.outline {
+  background: transparent;
+  border: 2px solid #fff;
+  color: #fff;
 }
 
-.hover\:text-primary:hover {
-  color: var(--primary);
+.hero-section .btn_1.outline:hover {
+  background: #fff;
+  color: #0E4C92;
 }
 
-.focus\:ring-primary:focus {
-  --tw-ring-color: var(--primary);
+.hero-section .owl-nav {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  transform: translateY(-50%);
+  z-index: 10;
 }
 
-/* Icon placeholders - in a real project, you would import actual icon fonts */
-.icon-star::before {
-  content: "★";
+.hero-section .owl-nav .owl-prev,
+.hero-section .owl-nav .owl-next {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.3) !important;
+  border-radius: 50%;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
 }
 
-.icon-star-half::before {
-  content: "½";
+.hero-section .owl-nav .owl-prev:hover,
+.hero-section .owl-nav .owl-next:hover {
+  background: rgba(255, 255, 255, 0.5) !important;
 }
 
-.icon-location::before {
-  content: "📍";
+.hero-section .owl-nav .owl-prev {
+  left: 20px;
 }
 
-.icon-phone::before {
-  content: "📞";
+.hero-section .owl-nav .owl-next {
+  right: 20px;
 }
 
-.icon-mail::before {
-  content: "✉️";
+.hero-section .owl-nav .owl-prev span,
+.hero-section .owl-nav .owl-next span {
+  font-size: 24px;
+  color: #fff;
 }
 
-.icon-clock::before {
-  content: "🕒";
+.hero-section .owl-dots {
+  position: absolute;
+  bottom: 30px;
+  width: 100%;
+  text-align: center;
 }
 
-.icon-search::before {
-  content: "🔍";
+.hero-section .owl-dots .owl-dot {
+  width: 12px;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  display: inline-block;
+  margin: 0 5px;
+  transition: all 0.3s ease;
 }
 
-.icon-check::before {
-  content: "✓";
-}
-
-.icon-users::before {
-  content: "👥";
-}
-
-.icon-facebook::before {
-  content: "f";
-}
-
-.icon-twitter::before {
-  content: "t";
-}
-
-.icon-instagram::before {
-  content: "i";
-}
-
-.icon-youtube::before {
-  content: "y";
+.hero-section .owl-dots .owl-dot.active {
+  background: #fff;
+  transform: scale(1.2);
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-  .container {
-    padding-left: 1rem;
-    padding-right: 1rem;
+  .hero-section {
+    min-height: 500px;
+  }
+  
+  .hero-section .owl-slide {
+    min-height: 500px;
+  }
+  
+  .hero-section .slide-text h2 {
+    font-size: 2.5rem;
+  }
+  
+  .hero-section .slide-text p {
+    font-size: 1rem;
+  }
+  
+  .hero-section .btn_1 {
+    padding: 10px 20px;
+    font-size: 1rem;
   }
 }
 
-.App {
-  text-align: center;
-}
-
-.App-header {
-  background-color: #282c34;
-  padding: 20px;
-  color: white;
-}
-
-.App-header h1 {
-  margin: 0;
-  font-size: 24px;
-}
-
-.App-header p {
-  font-size: 16px;
-  margin: 10px 0 0 0;
+@media (max-width: 576px) {
+  .hero-section .slide-text {
+    text-align: center !important;
+  }
+  
+  .hero-section .slide-text.text-end {
+    text-align: center !important;
+  }
+  
+  .hero-section .btn_1 {
+    display: block;
+    margin: 10px auto;
+    width: 80%;
+  }
 }
