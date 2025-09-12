@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 
 const Profile = () => {
   const [activeTab, setActiveTab] = useState('profile');
@@ -84,20 +85,51 @@ const Profile = () => {
   return (
     <div>
       {/* Hero Section */}
-      <div className="relative h-64 flex items-center justify-center overflow-hidden bg-gray-800">
+      <motion.div 
+        className="relative h-64 flex items-center justify-center overflow-hidden bg-gray-800"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+      >
         <div className="absolute inset-0 bg-black bg-opacity-60"></div>
         <div className="relative z-10 text-center px-4">
-          <h1 className="text-4xl font-bold text-white mb-4">My Profile</h1>
-          <p className="text-xl text-gray-200">Manage your account and travel information</p>
+          <motion.h1 
+            className="text-4xl font-bold text-white mb-4"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            My Profile
+          </motion.h1>
+          <motion.p 
+            className="text-xl text-gray-200"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            Manage your account and travel information
+          </motion.p>
         </div>
-      </div>
+      </motion.div>
       
       {/* Profile Content */}
-      <section className="py-16 bg-gray-100">
+      <motion.section 
+        className="py-16 bg-gray-100"
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+      >
         <div className="container mx-auto px-4">
           <div className="flex flex-col lg:flex-row gap-8">
             {/* Sidebar */}
-            <div className="lg:w-1/4">
+            <motion.div 
+              className="lg:w-1/4"
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              viewport={{ once: true }}
+            >
               <div className="bg-white rounded-lg shadow-md p-6 sticky top-24">
                 <div className="text-center mb-6">
                   <div className="mx-auto mb-4">
@@ -157,10 +189,16 @@ const Profile = () => {
                   Logout
                 </button>
               </div>
-            </div>
+            </motion.div>
             
             {/* Main Content */}
-            <div className="lg:w-3/4">
+            <motion.div 
+              className="lg:w-3/4"
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
               {activeTab === 'profile' && (
                 <div className="bg-white rounded-lg shadow-md p-6">
                   <h2 className="text-2xl font-bold text-gray-800 mb-6">Profile Information</h2>
@@ -226,7 +264,7 @@ const Profile = () => {
                         </tr>
                       </thead>
                       <tbody>
-                        {bookings.map((booking) => (
+                        {bookings.map((booking, index) => (
                           <tr key={booking.id} className="border-b border-gray-200 hover:bg-gray-50">
                             <td className="py-4 px-4">
                               <div className="font-medium text-gray-800">{booking.packageName}</div>
@@ -286,7 +324,7 @@ const Profile = () => {
                   ) : (
                     <div>
                       <div className="space-y-4 mb-8">
-                        {cartItems.map((item) => (
+                        {cartItems.map((item, index) => (
                           <div key={item.id} className="flex items-center border border-gray-200 rounded-lg p-4">
                             <div className="flex-grow">
                               <h3 className="font-bold text-gray-800">{item.name}</h3>
@@ -334,12 +372,16 @@ const Profile = () => {
                   <h2 className="text-2xl font-bold text-gray-800 mb-6">Notifications</h2>
                   
                   <div className="space-y-4">
-                    {notifications.map((notification) => (
-                      <div 
+                    {notifications.map((notification, index) => (
+                      <motion.div 
                         key={notification.id} 
                         className={`border border-gray-200 rounded-lg p-4 ${
                           notification.unread ? 'bg-blue-50 border-blue-200' : 'bg-white'
                         }`}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: index * 0.1 }}
+                        viewport={{ once: true }}
                       >
                         <div className="flex justify-between">
                           <h3 className="font-bold text-gray-800">{notification.title}</h3>
@@ -353,15 +395,15 @@ const Profile = () => {
                             </button>
                           </div>
                         )}
-                      </div>
+                      </motion.div>
                     ))}
                   </div>
                 </div>
               )}
-            </div>
+            </motion.div>
           </div>
         </div>
-      </section>
+      </motion.section>
     </div>
   );
 };
