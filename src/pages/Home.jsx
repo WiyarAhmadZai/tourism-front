@@ -1,169 +1,3 @@
-import React, { useEffect } from 'react';
-import Layout from '../components/Layout';
-
-const Home = () => {
-  useEffect(() => {
-    // Initialize carousel and other components after component mounts
-    const initScripts = () => {
-      // Check if jQuery is available
-      if (window.$) {
-        // Initialize owl carousel for hero section
-        const $heroCarousel = $('#carousel-home .owl-carousel');
-        if ($heroCarousel.length > 0) {
-          // Destroy any existing carousel instance
-          if ($heroCarousel.hasClass('owl-loaded')) {
-            $heroCarousel.trigger('destroy.owl.carousel');
-          }
-          
-          // Initialize the carousel with enhanced settings
-          $heroCarousel.owlCarousel({
-            items: 1,
-            loop: true,
-            autoplay: true,
-            autoplayTimeout: 7000,
-            autoplayHoverPause: true,
-            nav: true,
-            dots: true,
-            navText: ['<i class="icon-left-open-big"></i>', '<i class="icon-right-open-big"></i>'],
-            animateOut: 'fadeOut',
-            animateIn: 'fadeIn',
-            smartSpeed: 1000,
-            responsive: {
-              0: {
-                nav: false,
-                dots: true
-              },
-              768: {
-                nav: true,
-                dots: true
-              }
-            },
-            onInitialized: function() {
-              console.log('Hero carousel initialized successfully');
-            }
-          });
-        }
-        
-        // Initialize Paris Top Tours carousel
-        const $toursCarousel = $('.container .list_carousel.tours_carousel .owl-carousel');
-        if ($toursCarousel.length > 0) {
-          // Destroy any existing carousel instance
-          if ($toursCarousel.hasClass('owl-loaded')) {
-            $toursCarousel.trigger('destroy.owl.carousel');
-          }
-          
-          $toursCarousel.owlCarousel({
-            items: 3,
-            loop: true,
-            autoplay: true,
-            autoplayTimeout: 5000,
-            autoplayHoverPause: true,
-            nav: true,
-            dots: false,
-            navText: ['<i class="icon-left-open-big"></i>', '<i class="icon-right-open-big"></i>'],
-            responsive: {
-              0: {
-                items: 1
-              },
-              768: {
-                items: 2
-              },
-              992: {
-                items: 3
-              }
-            },
-            onInitialized: function() {
-              console.log('Paris Top Tours carousel initialized successfully');
-            }
-          });
-        }
-        
-        // Initialize Paris Top Hotels carousel
-        const $hotelsCarousel = $('.container .list_carousel.hotels_carousel .owl-carousel');
-        if ($hotelsCarousel.length > 0) {
-          // Destroy any existing carousel instance
-          if ($hotelsCarousel.hasClass('owl-loaded')) {
-            $hotelsCarousel.trigger('destroy.owl.carousel');
-          }
-          
-          $hotelsCarousel.owlCarousel({
-            items: 3,
-            loop: true,
-            autoplay: true,
-            autoplayTimeout: 5000,
-            autoplayHoverPause: true,
-            nav: true,
-            dots: false,
-            navText: ['<i class="icon-left-open-big"></i>', '<i class="icon-right-open-big"></i>'],
-            responsive: {
-              0: {
-                items: 1
-              },
-              768: {
-                items: 2
-              },
-              992: {
-                items: 3
-              }
-            },
-            onInitialized: function() {
-              console.log('Paris Top Hotels carousel initialized successfully');
-            }
-          });
-        }
-        
-        // Initialize other carousels
-        $('.list_carousel .owl-carousel').each(function() {
-          // Skip the tours and hotels carousels as they are already initialized
-          if (!$(this).closest('.tours_carousel').length && 
-              !$(this).closest('.hotels_carousel').length &&
-              !$(this).closest('#carousel-home').length) {
-            
-            // Destroy any existing carousel instance
-            if ($(this).hasClass('owl-loaded')) {
-              $(this).trigger('destroy.owl.carousel');
-            }
-            
-            $(this).owlCarousel({
-              items: 3,
-              loop: true,
-              autoplay: true,
-              autoplayTimeout: 5000,
-              autoplayHoverPause: true,
-              nav: true,
-              dots: true,
-              navText: ['<i class="icon-left-open-big"></i>', '<i class="icon-right-open-big"></i>'],
-              responsive: {
-                0: {
-                  items: 1
-                },
-                768: {
-                  items: 2
-                },
-                992: {
-                  items: 3
-                }
-              }
-            });
-          }
-        });
-        
-        // Initialize other components
-        window.initializeComponents && window.initializeComponents();
-      } else {
-        console.log('jQuery not available, retrying in 100ms');
-        setTimeout(initScripts, 100);
-      }
-    };
-
-    // Wait a bit for all resources to load
-    const timer = setTimeout(() => {
-      initScripts();
-    }, 100);
-
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
     <Layout>
       {/* Hero Section - Carousel */}
@@ -233,8 +67,9 @@ const Home = () => {
         <div id="icon_drag_mobile"></div>
       </div>
 
-      <div className="white_bg">
-        <div className="container margin_60">
+      <div className="container">
+        <div className="white_bg">
+        <div className="margin_60">
           <div className="row small-gutters categories_grid">
             <div className="col-sm-12 col-md-6">
               <a href="all_tours_list.html">
@@ -280,7 +115,7 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="container margin_60">
+      <div className="margin_60">
         <div className="main_title">
           <h2>Paris <span>Top</span> Tours</h2>
           <p>Quisque at tortor a libero posuere laoreet vitae sed arcu. Curabitur consequat.</p>
@@ -544,7 +379,7 @@ const Home = () => {
       </div>
 
       <div className="white_bg">
-        <div className="container margin_60">
+        <div className="margin_60">
           <div className="main_title">
             <h2>Plan <span>Your Tour</span> Easly</h2>
             <p>
@@ -581,7 +416,7 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="container margin_60">
+      <div className="margin_60">
         <div className="main_title">
           <h2>Lates <span>Blog</span> News</h2>
           <p>Quisque at tortor a libero posuere laoreet vitae sed arcu. Curabitur consequat.</p>
@@ -643,8 +478,6 @@ const Home = () => {
         </div>
         <p className="btn_home_align"><a href="blog.html" className="btn_1 rounded">View all news</a></p>
       </div>
+      </div>
     </Layout>
   );
-};
-
-export default Home;
